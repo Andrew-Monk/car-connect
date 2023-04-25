@@ -4,7 +4,11 @@ from django.db import models
 
 
 class AutomobileVO(models.Model):
+    import_href = models.CharField(max_length=200, unique=True, null=True)
     vin = models.CharField(max_length=17, unique=True)
+
+    def __str__(self):
+        return self.vin
 
 
 class Salesperson(models.Model):
@@ -17,10 +21,11 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     address = models.TextField()
-    phone_number = models.IntegerField(max_length=10)
+    phone_number = models.CharField(max_length=15)
 
 
 class Sale(models.Model):
+    price = models.IntegerField(max_length=10, null=True)
     automobile = models.ForeignKey(
         AutomobileVO,
         related_name='sale',

@@ -1,15 +1,15 @@
 from django.views.decorators.http import require_http_methods
-from .models import Salesperson, Customer
+from .models import Salesperson, Customer, Sale, AutomobileVO
 import json
 from django.http import JsonResponse
 from common.json import ModelEncoder
 
 
-class SalespersonListEncoder(ModelEncoder):
-    model = Salesperson
+class AutomobileVOEncoder(ModelEncoder):
+    model = AutomobileVO
     properties = [
-        "first_name",
-        "last_name",
+        "vin",
+        "import_href",
     ]
 
 
@@ -22,14 +22,6 @@ class SalespersonDetailEncoder(ModelEncoder):
     ]
 
 
-class CustomerListEncoder(ModelEncoder):
-    model = Customer
-    properties = [
-        "first_name",
-        "last_name",
-    ]
-
-
 class CustomerDetailEncoder(ModelEncoder):
     model = Customer
     properties = [
@@ -37,6 +29,47 @@ class CustomerDetailEncoder(ModelEncoder):
         'last_name',
         'address',
         'phone_number',
+    ]
+
+
+class SaleListEncoder(ModelEncoder):
+    model = Sale
+    properties = [
+        "automobile",
+        "salesperson",
+        "customer",
+        "price",
+    ]
+    encoders= {
+        'automobile': AutomobileVOEncoder(),
+        'salesperson': SalespersonDetailEncoder(),
+        'customer': CustomerDetailEncoder(),
+    }
+
+
+class SaleDetailEncoder(ModelEncoder):
+    model = Sale
+    propeties = [
+        "automobile",
+        "salesperson",
+        "customer",
+        "price",
+    ]
+
+
+class SalespersonListEncoder(ModelEncoder):
+    model = Salesperson
+    properties = [
+        "first_name",
+        "last_name",
+    ]
+
+
+class CustomerListEncoder(ModelEncoder):
+    model = Customer
+    properties = [
+        "first_name",
+        "last_name",
     ]
 
 
@@ -115,4 +148,49 @@ def detail_customer(request, pk):
         customer = Customer.objects.get(id=pk)
         return JsonResponse(
             customer, encoder=CustomerDetailEncoder, safe=False
+        )
+
+
+@require_http_methods(["GET", "POST"])
+def list_sales(request, automobile_vo_id=None):
+    if request.method == 'GET':
+        if automobile_vo_id is not None:
+            sales = Sale.objects.filter(automobile=automobile_vo_id)
+            return JsonResponse(
+                {'message': automobile_vo_id},
+            )
+        else:
+            sales = Sale.objects.all()
+        return JsonResponse(
+            {'sales': sales},
+            encoder=SaleListEncoder
+        )
+    else:
+        content = json.loads(request.body)
+        sale = Sale.objects.create(**content)
+        return JsonResponse(
+            sale,
+            encoder=SaleDetailEncoder,
+            safe=False
+        )
+
+
+@require_http_methods(['DELETE', 'GET', 'PUT'])
+def detail_sale(request, pk):
+    if request.method == 'GET':
+        sale = Sale.objects.get(id=pk)
+        return JsonResponse(
+            {'sale': sale}, encoder=SaleDetailEncoder
+        )
+    elif request.method == 'DELETE':
+        count, _ = Sale.objects.filter(id=pk).delete()
+        return JsonResponse(
+            {"deleted": count > 0}
+        )
+    else:
+        content = json.loads(request.body)
+        Sale.objects.filter(id=pk).update(**content)
+        sale = Sale.objects.get(id=pk)
+        return JsonResponse(
+            sale, encoder=SaleDetailEncoder, safe=False
         )
