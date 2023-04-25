@@ -5,7 +5,7 @@ function NewSaleForm () {
 	const [salesperson, setSalesperson] = useState('')
 	const [customer, setCustomer] = useState('')
 	const [price, setPrice] = useState('')
-	const [vins, setVins] = useState([])
+	const [autos, setVins] = useState([])
 	const [salespeople, setSalespeople] = useState([])
 	const [customers, setCustomers] = useState([])
 
@@ -25,8 +25,8 @@ function NewSaleForm () {
             const [vinData, salespeopleData, customersData] = await Promise.all(
 							response.map(res => res.json())
 						)
-            setVins(vinData.vins || [])
-						setSalespeople(salespeopleData.salespeople || [])
+            setVins(vinData.autos)
+						setSalespeople(salespeopleData.salespeople)
 						setCustomers(customersData.customers)
 						console.log(vinData, salespeopleData, customersData);
         }
@@ -99,9 +99,9 @@ function NewSaleForm () {
 					<div className ="form-floating mb-3">
 					<select value={vin} onChange={handleVinChange} required name="vin" id='vin' className ="form-select">
 								<option value="">Choose a Vin</option>
-								{vins.map(auto => {
+								{autos.map(auto => {
 									return (
-										<option key={auto.vin} value={auto.vin}>
+										<option key={auto.vin} value={auto.id}>
 											{auto.vin}
 										</option>
 									)
@@ -113,7 +113,7 @@ function NewSaleForm () {
 								<option value="">Choose a Salesperson</option>
 								{salespeople.map(person => {
 									return (
-										<option key={person.first_name} value={person.id}>
+										<option key={person.first_name} value={person.first_name}>
 											{person.first_name}
 										</option>
 									)

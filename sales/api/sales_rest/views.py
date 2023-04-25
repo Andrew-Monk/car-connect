@@ -10,7 +10,7 @@ class AutomobileVOEncoder(ModelEncoder):
     properties = [
         "vin",
         "import_href",
-        'id', 
+        'id',
     ]
 
 
@@ -175,12 +175,24 @@ def list_sales(request, automobile_vo_id=None):
         )
     else:
         content = json.loads(request.body)
+        try:
+            salesperson = Salesperson.objects.get(id=content['salesperson'])
+            content['salesperson'] = salesperson
+            customer = Customer.objects.get(id=content['customer'])
+            content['customer'] = customer
+            vin = AutomobileVO.objects.get(id=content['vin'])
+            content['vin'] = vin
+        except (Salesperson.DoesNotExist, Customer.DoesNotExist, AutomobileVO.DoesNotExist):
+            return JsonResponse(
+                {'message': "invalid stuff"},
+                status=400
+            )
         sale = Sale.objects.create(**content)
         return JsonResponse(
-            sale,
-            encoder=SaleDetailEncoder,
+            sale, encoder=SaleDetailEncoder,
             safe=False
         )
+
 
 
 @require_http_methods(['DELETE', 'GET', 'PUT'])

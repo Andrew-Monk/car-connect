@@ -15,6 +15,7 @@ class Salesperson(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     employee_id = models.IntegerField(max_length=4)
+    id = models.IntegerField(max_length=9, primary_key=True)
 
 
 class Customer(models.Model):
