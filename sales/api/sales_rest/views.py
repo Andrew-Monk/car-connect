@@ -42,8 +42,9 @@ class SaleListEncoder(ModelEncoder):
         "salesperson",
         "customer",
         "price",
+        "id",
     ]
-    encoders= {
+    encoders = {
         'automobile': AutomobileVOEncoder(),
         'salesperson': SalespersonDetailEncoder(),
         'customer': CustomerDetailEncoder(),
@@ -52,12 +53,17 @@ class SaleListEncoder(ModelEncoder):
 
 class SaleDetailEncoder(ModelEncoder):
     model = Sale
-    propeties = [
+    properties = [
         "automobile",
         "salesperson",
         "customer",
         "price",
     ]
+    encoders = {
+        "automobile": AutomobileVOEncoder(),
+        'salesperson': SalespersonDetailEncoder(),
+        'customer': CustomerDetailEncoder(),
+    }
 
 
 class SalespersonListEncoder(ModelEncoder):
@@ -178,10 +184,14 @@ def list_sales(request, automobile_vo_id=None):
         try:
             salesperson = Salesperson.objects.get(id=content['salesperson'])
             content['salesperson'] = salesperson
+            print(salesperson, "test test test")
             customer = Customer.objects.get(id=content['customer'])
             content['customer'] = customer
-            vin = AutomobileVO.objects.get(id=content['vin'])
-            content['vin'] = vin
+            print(customer, "customer customer test test test")
+            automobile = AutomobileVO.objects.get(id=content['automobile'])
+            content['automobile'] = automobile
+            print(automobile, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+            print(content)
         except (Salesperson.DoesNotExist, Customer.DoesNotExist, AutomobileVO.DoesNotExist):
             return JsonResponse(
                 {'message': "invalid stuff"},

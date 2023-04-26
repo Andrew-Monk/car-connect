@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 
 function NewSaleForm () {
-  const [vin, setVin] = useState('')
+  const [automobile, setAutomobile] = useState('')
 	const [salesperson, setSalesperson] = useState('')
 	const [customer, setCustomer] = useState('')
 	const [price, setPrice] = useState('')
@@ -11,30 +11,30 @@ function NewSaleForm () {
 
 
     const fetchData = async () => {
-        const vinUrl = 'http://localhost:8100/api/automobiles/'
+        const automobileUrl = 'http://localhost:8100/api/automobiles/'
 				const salespeopleUrl = 'http://localhost:8090/api/salespeople/'
 				const customersUrl = 'http://localhost:8090/api/customers/'
 
         const response = await Promise.all([
-					fetch(vinUrl),
+					fetch(automobileUrl),
 					fetch(salespeopleUrl),
 					fetch(customersUrl)
 				])
 
         if (response.every(res => res.ok)) {
-            const [vinData, salespeopleData, customersData] = await Promise.all(
+            const [automobileData, salespeopleData, customersData] = await Promise.all(
 							response.map(res => res.json())
 						)
-            setVins(vinData.autos)
+            setVins(automobileData.autos)
 						setSalespeople(salespeopleData.salespeople)
 						setCustomers(customersData.customers)
-						console.log(vinData, salespeopleData, customersData);
+						console.log(automobileData, salespeopleData, customersData);
         }
       }
 
-		const handleVinChange = (event) => {
+		const handleAutomobileChange = (event) => {
 			const value = event.target.value
-			setVin(value)
+			setAutomobile(value)
 		}
 
 		const handleSalespersonChange = (event) => {
@@ -59,7 +59,7 @@ function NewSaleForm () {
 
 			const data = {}
 
-			data.vin = vin
+			data.automobile = automobile
 			data.salesperson = salesperson
 			data.customer = customer
 			data.price = price
@@ -80,7 +80,7 @@ function NewSaleForm () {
     		const newSale = await response.json();
     		console.log(newSale);
 
-				setVin('')
+				setAutomobile('')
 				setSalesperson('')
 				setCustomer('')
   }
@@ -97,11 +97,11 @@ function NewSaleForm () {
 					<h1>New Sale</h1>
 					<form onSubmit={handleSubmit}>
 					<div className ="form-floating mb-3">
-					<select value={vin} onChange={handleVinChange} required name="vin" id='vin' className ="form-select">
+					<select value={automobile} onChange={handleAutomobileChange} required name="vin" id='vin' className ="form-select">
 								<option value="">Choose a Vin</option>
 								{autos.map(auto => {
 									return (
-										<option key={auto.vin} value={auto.id}>
+										<option key={auto.id} value={auto.id}>
 											{auto.vin}
 										</option>
 									)
@@ -113,8 +113,8 @@ function NewSaleForm () {
 								<option value="">Choose a Salesperson</option>
 								{salespeople.map(person => {
 									return (
-										<option key={person.first_name} value={person.first_name}>
-											{person.first_name}
+										<option key={person.first_name} value={person.id}>
+											{person.first_name} {person.last_name}
 										</option>
 									)
 								})}
@@ -126,14 +126,14 @@ function NewSaleForm () {
 								{customers.map(customer => {
 									return (
 										<option key={customer.first_name} value={customer.id}>
-											{customer.first_name}
+											{customer.first_name} {customer.last_name}
 										</option>
 									)
 								})}
 							</select>
 							</div>
 						<div className ="form-floating mb-3">
-							<input value={price} onChange={handlePriceChange} placeholder="price" name='price' required type="integer" id="price" className ="form-control"/>
+							<input value={price} onChange={handlePriceChange} placeholder="price" name='price' required type="string" id="price" className ="form-control"/>
 							<label htmlFor="price">Price</label>
 						</div>
 						<button className ="btn btn-primary">Create</button>

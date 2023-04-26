@@ -15,7 +15,7 @@ class Salesperson(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     employee_id = models.IntegerField(max_length=4)
-    id = models.IntegerField(max_length=9, primary_key=True)
+    # id = models.IntegerField(max_length=9, primary_key=True)
 
 
 class Customer(models.Model):
@@ -26,7 +26,7 @@ class Customer(models.Model):
 
 
 class Sale(models.Model):
-    price = models.IntegerField(max_length=10, null=True)
+    price = models.DecimalField(decimal_places=2, max_digits=10, null=True)
     automobile = models.ForeignKey(
         AutomobileVO,
         related_name='sale',
@@ -42,3 +42,6 @@ class Sale(models.Model):
         related_name='sale',
         on_delete=models.CASCADE,
     )
+
+    # def price_to_str(self):
+    #     return str(self.price)
