@@ -7,6 +7,7 @@ import CustomerForm from './CustomerForm';
 import ListCustomerForm from './ListCustomersForm'
 import NewSaleForm from './NewSaleForm'
 import ListSalesForm from './ListSalesForm'
+import SalespersonHistoryForm from './SalespersonHistoryForm'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="salespeople">
             <Route path="create" element={<SalespersonForm />} />
             <Route path="list" element={<ListSalespeopleForm />} />
+            <Route path="history" element={<SalespersonHistoryForm />} />
           </Route>
           <Route path="customers">
             <Route path="create" element={<CustomerForm />} />
