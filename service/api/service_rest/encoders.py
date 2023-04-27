@@ -13,6 +13,7 @@ class AutomolbileVOEncoder(ModelEncoder):
 class TechnicianListEncoder(ModelEncoder):
     model = Technician
     properties = [
+        "id",
         "first_name",
         "last_name",
         "employee_id",
@@ -28,11 +29,16 @@ class AppointmentListEncoder(ModelEncoder):
         "vin",
         "technician",
         "id",
+        'is_vip'
     ]
     encoders = {
-        "vin": AutomolbileVOEncoder(),
+        # "vin": AutomolbileVOEncoder(),
         "technician": TechnicianListEncoder()
     }
+
+    def get_extra_data(self, o):
+        count = AutomobileVO.objects.filter(vin=o.vin).count
+        return {'is_vip': count > 0}
 
     def get_extra_data(self, o):
         if o.status:

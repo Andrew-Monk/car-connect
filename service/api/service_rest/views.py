@@ -47,17 +47,16 @@ def api_list_appointments(request):
 
     else:
         content = json.loads(request.body)
-        print(content)
 
-        try:
-            vin = AutomobileVO.objects.get(vin=content["vin"])
-            content["vin"] = vin
+        # try:
+        #     vin = AutomobileVO.objects.get(vin=content["vin"])
+        #     content["vin"] = vin
 
-        except AutomobileVO.DoesNotExist:
-            return JsonResponse(
-                {"message": "Invalid vin id"},
-                status=400,
-            )
+        # except AutomobileVO.DoesNotExist:
+        #     return JsonResponse(
+        #         {"message": "Invalid vin id"},
+        #         status=400,
+        #     )
 
         try:
             technician = Technician.objects.get(
@@ -96,7 +95,6 @@ def api_delete_appointment(request, id):
 def api_finish_appointment(request, id):
     try:
         appointment = Appointment.objects.get(id=id)
-        print(appointment)
         appointment.finish()
 
     except Appointment.DoesNotExist:
