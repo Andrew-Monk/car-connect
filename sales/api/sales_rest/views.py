@@ -166,19 +166,27 @@ def detail_customer(request, pk):
 
 
 @require_http_methods(["GET", "POST"])
-def list_sales(request, automobile_vo_id=None):
+def list_sales(request, vin=None):
     if request.method == 'GET':
-        if automobile_vo_id is not None:
-            sales = Sale.objects.filter(automobile=automobile_vo_id)
-            return JsonResponse(
-                {'message': automobile_vo_id},
-            )
+        if vin is not None:
+            try:
+                automobile = AutomobileVO.objects.get(vin=vin)
+                sales = Sale.objects.filter(automobile=automobile)
+                return JsonResponse(
+                    {'sales': sales},
+                    encoders=SaleListEncoder
+                )
+            except AutomobileVO.DoesNotExist:
+                return JsonResponse(
+                    {'message': 'automobile with that vin does not exist'},
+                    status=404
+                )
         else:
             sales = Sale.objects.all()
-        return JsonResponse(
-            {'sales': sales},
-            encoder=SaleListEncoder
-        )
+            return JsonResponse(
+                {'sales': sales},
+                encoder=SaleListEncoder
+            )
     else:
         content = json.loads(request.body)
         try:
@@ -188,7 +196,7 @@ def list_sales(request, automobile_vo_id=None):
             customer = Customer.objects.get(id=content['customer'])
             content['customer'] = customer
             print(customer, "customer customer test test test")
-            automobile = AutomobileVO.objects.get(id=content['automobile'])
+            automobile = AutomobileVO.objects.get(vin=content['automobile'])
             content['automobile'] = automobile
             print(automobile, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
             print(content)

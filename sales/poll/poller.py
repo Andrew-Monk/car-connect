@@ -16,7 +16,7 @@ from sales_rest.models import AutomobileVO
 
 
 def vin_poll():
-    response = requests.get('http://project-beta-inventory-api:8000/api/automobiles/')
+    response = requests.get('http://project-beta-inventory-api-1:8000/api/automobiles/')
     content = json.loads(response.content)
     print(content)
     for automobile in content["autos"]:

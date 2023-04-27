@@ -83,8 +83,25 @@ function NewSaleForm () {
 				setAutomobile('')
 				setSalesperson('')
 				setCustomer('')
+				setPrice('')
   }
-}
+			// const autoUrl = `http://localhost:8100/api/automobiles/${automobile}/`
+			// const soldAuto = await fetch(autoUrl)
+			// if (soldAuto.ok) {
+			// 	const auto = await soldAuto.json()
+			// 	auto.sold = true
+			// 	const putConfig = {
+			// 		method: 'put',
+			// 		body: JSON.stringify(auto),
+			// 		headers: {
+			// 			'Content-Type': 'applications/json',
+			// 		}
+			// 	}
+			// 	const putResponse = await fetch(autoUrl, putConfig)
+			// 	if (putResponse.ok) {
+			// 		console.log("updated to sold")
+			// 	}}
+			}
 
       useEffect(() => {
         fetchData()
@@ -101,7 +118,7 @@ function NewSaleForm () {
 								<option value="">Choose a Vin</option>
 								{autos.map(auto => {
 									return (
-										<option key={auto.id} value={auto.id}>
+										<option key={auto.vin} value={auto.vin}>
 											{auto.vin}
 										</option>
 									)

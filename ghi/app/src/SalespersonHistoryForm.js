@@ -76,7 +76,7 @@ function SalespersonHistory () {
 											<td>{filteredSale.salesperson.first_name}</td>
 											<td>{filteredSale.customer.first_name} {filteredSale.customer.last_name}</td>
 											<td>{filteredSale.automobile.vin}</td>
-											<td>{filteredSale.price}</td>
+											<td>${filteredSale.price}</td>
 										</tr>
 									))}
 							</tbody>
