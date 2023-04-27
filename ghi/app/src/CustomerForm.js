@@ -85,8 +85,8 @@ function CustomerForm () {
 										<label htmlFor="address">Address</label>
 								</div>
 								<div className ="form-floating mb-3">
-										<input value={phoneNumber} onChange={handlePhoneNumberChange} placeholder="phone number" name = 'phone number' required type="text" id="phone_number" className ="form-control"/>
-										<label htmlFor="phone_number">Phone Number</label>
+										<input value={phoneNumber} onChange={handlePhoneNumberChange} placeholder="phone number" name = 'phone number' required type="tel" id="phone_number" className ="form-control"/>
+										<label htmlFor="phone_number">Phone Number xxx-xxx-xxxx</label>
 								</div>
 									<button className ="btn btn-primary">Create</button>
 								</form>
