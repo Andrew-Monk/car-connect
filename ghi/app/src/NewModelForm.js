@@ -8,14 +8,12 @@ function NewModelForm () {
 
 		const fetchData = async () => {
 	    const url = "http://localhost:8100/api/manufacturers/"
-	    console.log(url);
 
-	    const response = await fetch(url);
-	    console.log(response);
+
+	    const response = await fetch(url)
 
 	    if (response.ok) {
-		    const data = await response.json();
-				console.log(data)
+		    const data = await response.json()
 		    setManufacturers(data.manufacturers)
 	    }
     }
@@ -45,7 +43,6 @@ function NewModelForm () {
         data.picture_url = pictureUrl
         data.manufacturer_id = manufacturer
 
-        console.log(data)
 
         const modelsUrl = "http://localhost:8100/api/models/"
         const fetchConfig = {
@@ -59,7 +56,6 @@ function NewModelForm () {
         const response = await fetch(modelsUrl, fetchConfig)
         if (response.ok) {
             const newModel = await response.json()
-            console.log(newModel)
 
             setName('')
             setPictureUrl('')

@@ -28,7 +28,6 @@ function NewSaleForm () {
             setVins(automobileData.autos)
 						setSalespeople(salespeopleData.salespeople)
 						setCustomers(customersData.customers)
-						console.log(automobileData, salespeopleData, customersData);
         }
       }
 
@@ -64,9 +63,8 @@ function NewSaleForm () {
 			data.customer = customer
 			data.price = price
 
-			console.log(data)
 
-			const saleUrl = 'http://localhost:8090/api/sales/';
+			const saleUrl = 'http://localhost:8090/api/sales/'
   		const fetchConfig = {
     		method: "post",
     		body: JSON.stringify(data),
@@ -75,10 +73,9 @@ function NewSaleForm () {
     },
   };
 
-  		const response = await fetch(saleUrl, fetchConfig);
+  		const response = await fetch(saleUrl, fetchConfig)
   		if (response.ok) {
-    		const newSale = await response.json();
-    		console.log(newSale);
+    		const newSale = await response.json()
 
 				setAutomobile('')
 				setSalesperson('')
@@ -99,7 +96,6 @@ function NewSaleForm () {
 				}
 				const putResponse = await fetch(autoUrl, putConfig)
 				if (putResponse.ok) {
-					console.log("updated to sold")
 				}}
 			}
 

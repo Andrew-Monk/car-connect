@@ -9,14 +9,11 @@ function NewAutomobileForm () {
 
 		const fetchData = async () => {
 	    const url = "http://localhost:8100/api/models/"
-	    console.log(url);
 
-	    const response = await fetch(url);
-	    console.log(response);
+	    const response = await fetch(url)
 
 	    if (response.ok) {
-		    const data = await response.json();
-				console.log(data)
+		    const data = await response.json()
 		    setModels(data.models)
 	    }
     }
@@ -66,7 +63,6 @@ function NewAutomobileForm () {
         const response = await fetch(automobileUrl, fetchConfig)
         if (response.ok) {
             const newAuto = await response.json()
-            console.log(newAuto)
 
             setColor('')
             setYear('')

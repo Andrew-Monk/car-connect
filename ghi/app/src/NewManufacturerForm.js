@@ -16,7 +16,6 @@ function NewManufacturerForm () {
 
         data.name = name
 
-        console.log(data)
 
         const manufacturerUrl = 'http://localhost:8100/api/manufacturers/'
         const fetchConfig = {
@@ -30,7 +29,6 @@ function NewManufacturerForm () {
         const response = await fetch(manufacturerUrl, fetchConfig)
         if (response.ok) {
             const newCustomer = await response.json()
-            console.log(newCustomer)
 
             setName('')
         }

@@ -4,7 +4,6 @@ function SalespersonHistory () {
     const [salesperson, setSalesperson] = useState('')
 		const [salespeople, setSalespeople] = useState([])
 		const [sales, setSales] = useState([])
-		const [filteredSales, setFilteredSales] = useState([])
 
     const fetchData = async () => {
 			const salesUrl = 'http://localhost:8090/api/sales/'
@@ -21,7 +20,6 @@ function SalespersonHistory () {
 					)
 					setSales(salesData.sales)
 					setSalespeople(salespeopleData.salespeople)
-					console.log(salesData.sales);
 			}
 		}
 

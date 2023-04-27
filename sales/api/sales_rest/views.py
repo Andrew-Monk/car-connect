@@ -2,89 +2,14 @@ from django.views.decorators.http import require_http_methods
 from .models import Salesperson, Customer, Sale, AutomobileVO
 import json
 from django.http import JsonResponse
-from common.json import ModelEncoder
-
-
-class AutomobileVOEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = [
-        "vin",
-        "import_href",
-        'id',
-    ]
-
-
-class SalespersonDetailEncoder(ModelEncoder):
-    model = Salesperson
-    properties = [
-        "first_name",
-        "last_name",
-        "employee_id",
-        "id",
-    ]
-
-
-class CustomerDetailEncoder(ModelEncoder):
-    model = Customer
-    properties = [
-        "first_name",
-        'last_name',
-        'address',
-        'phone_number',
-        'id',
-    ]
-
-
-class SaleListEncoder(ModelEncoder):
-    model = Sale
-    properties = [
-        "automobile",
-        "salesperson",
-        "customer",
-        "price",
-        "id",
-    ]
-    encoders = {
-        'automobile': AutomobileVOEncoder(),
-        'salesperson': SalespersonDetailEncoder(),
-        'customer': CustomerDetailEncoder(),
-    }
-
-
-class SaleDetailEncoder(ModelEncoder):
-    model = Sale
-    properties = [
-        "automobile",
-        "salesperson",
-        "customer",
-        "price",
-    ]
-    encoders = {
-        "automobile": AutomobileVOEncoder(),
-        'salesperson': SalespersonDetailEncoder(),
-        'customer': CustomerDetailEncoder(),
-    }
-
-
-class SalespersonListEncoder(ModelEncoder):
-    model = Salesperson
-    properties = [
-        "first_name",
-        "last_name",
-        "employee_id",
-        "id",
-    ]
-
-
-class CustomerListEncoder(ModelEncoder):
-    model = Customer
-    properties = [
-        "first_name",
-        "last_name",
-        "phone_number",
-        "address",
-        "id",
-    ]
+from .encoders import (
+    SaleDetailEncoder,
+    SaleListEncoder,
+    SalespersonDetailEncoder,
+    SalespersonListEncoder,
+    CustomerDetailEncoder,
+    CustomerListEncoder
+)
 
 
 @require_http_methods(["GET", "POST"])
@@ -200,7 +125,11 @@ def list_sales(request, vin=None):
             content['automobile'] = automobile
             print(automobile, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
             print(content)
-        except (Salesperson.DoesNotExist, Customer.DoesNotExist, AutomobileVO.DoesNotExist):
+        except (
+            Salesperson.DoesNotExist,
+            Customer.DoesNotExist,
+            AutomobileVO.DoesNotExist
+        ):
             return JsonResponse(
                 {'message': "invalid stuff"},
                 status=400
@@ -210,7 +139,6 @@ def list_sales(request, vin=None):
             sale, encoder=SaleDetailEncoder,
             safe=False
         )
-
 
 
 @require_http_methods(['DELETE', 'GET', 'PUT'])

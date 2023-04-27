@@ -1,28 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 function CustomersList () {
     const [customers, setCustomers] = useState([])
 
     const fetchData = async () => {
-	    const url = "http://localhost:8090/api/customers/";
-	    console.log(url);
+	    const url = "http://localhost:8090/api/customers/"
 
-	    const response = await fetch(url);
-	    console.log(response);
+	    const response = await fetch(url)
 
 	    if (response.ok) {
-		    const data = await response.json();
+		    const data = await response.json()
 		    setCustomers(data.customers)
 	    } else {
-		    console.log('its not working');
+		    console.log('its not working')
 	    }
     }
 
     async function handleDelete(customerId, event) {
         event.preventDefault()
-        console.log("customer to be deleted", customerId)
         const response = await fetch(`http://localhost:8090/api/customers/${customerId}`, {method: 'delete'} )
-        console.log("delete respone", response)
         fetchData()
     }
 

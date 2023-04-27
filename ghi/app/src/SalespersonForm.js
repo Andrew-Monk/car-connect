@@ -5,13 +5,6 @@ function SalespersonForm () {
     const [lastName, setLastName] = useState('')
     const [employeeId, setEmployeeId] = useState('')
 
-    // const fetchData = async () => {
-    //     const url = "http://localhost:8090/api/salespeople"
-
-    //     const response = await response.json()
-
-    // }
-
     const handleFirstNameChange = (event) => {
         const value = event.target.value
         setFirstName(value)
@@ -37,7 +30,6 @@ function SalespersonForm () {
         data.last_name = lastName
         data.employee_id = employeeId
 
-        console.log(data)
 
         const salespersonUrl = 'http://localhost:8090/api/salespeople/'
         const fetchConfig = {
@@ -51,7 +43,6 @@ function SalespersonForm () {
         const response = await fetch(salespersonUrl, fetchConfig)
         if (response.ok) {
             const newSalesperson = await response.json()
-            console.log(newSalesperson)
 
             setFirstName('')
             setLastName('')
@@ -61,7 +52,6 @@ function SalespersonForm () {
 
 
         useEffect(() => {
-            // fetchData()
         }, [])
 
 

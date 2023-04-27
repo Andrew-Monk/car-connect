@@ -4,7 +4,7 @@ function CustomerForm () {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [address, setAddress] = useState('')
-		const [phoneNumber, setPhoneNumber] = useState('')
+	const [phoneNumber, setPhoneNumber] = useState('')
 
 
     const handleFirstNameChange = (event) => {
@@ -38,7 +38,6 @@ function CustomerForm () {
         data.address = address
 				data.phone_number = phoneNumber
 
-        console.log(data)
 
         const customersUrl = 'http://localhost:8090/api/customers/'
         const fetchConfig = {
@@ -52,7 +51,7 @@ function CustomerForm () {
         const response = await fetch(customersUrl, fetchConfig)
         if (response.ok) {
             const newCustomer = await response.json()
-            console.log(newCustomer)
+
 
             setFirstName('')
             setLastName('')
