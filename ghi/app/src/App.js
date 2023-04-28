@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
-import SalespersonForm from './SalespersonForm'
+import SalespersonForm from './NewSalespersonForm'
 import ListSalespeopleForm from './ListSalespeopleForm'
 import CustomerForm from './NewCustomerForm';
 import ListCustomerForm from './ListCustomersForm'
