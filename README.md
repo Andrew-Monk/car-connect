@@ -2,8 +2,8 @@
 
 Team:
 
-* Andrew Monk - Service
-* Person 2 - Which microservice?
+*
+* Alex Winterlee - sales
 
 ## Design
 
