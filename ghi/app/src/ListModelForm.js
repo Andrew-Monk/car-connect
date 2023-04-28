@@ -32,9 +32,9 @@ function ListModelForm () {
 		<table className="table table-striped mx-auto">
 			<thead>
 				<tr key='info'>
-					<th key='models'>Models</th>
-					<th key='manufacturer'>Manufacturer</th>
-					<th key='picture_url'>Image</th>
+					<th>Models</th>
+					<th>Manufacturer</th>
+					<th>Image</th>
 				</tr>
 				</thead>
 			<tbody>

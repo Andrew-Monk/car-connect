@@ -12,7 +12,6 @@ function ServiceHistory() {
       const data = await response.json();
       setAppointments(data.appointments);
       setFullAppointments(data.appointments);
-      console.log(data)
     } else {
       console.log('Error fetching appointments');
     }

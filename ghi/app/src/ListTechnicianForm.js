@@ -43,9 +43,9 @@ function ListTechnicians () {
 		<table className="table table-striped mx-auto">
 			<thead>
 				<tr key='info'>
-					<th key='first_name'>First Name</th>
-					<th key='last_name'>Last Name</th>
-					<th key='id'>Employee ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Employee ID</th>
 				</tr>
 				</thead>
 			<tbody>

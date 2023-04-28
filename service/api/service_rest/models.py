@@ -52,12 +52,6 @@ class Appointment(models.Model):
         on_delete=models.PROTECT,
     )
 
-    # vin = models.ForeignKey(
-    #     AutomobileVO,
-    #     related_name="appointment",
-    #     on_delete=models.CASCADE
-    # )
-
     vin = models.CharField(max_length=17)
 
     customer_name = models.CharField(max_length=100)

@@ -32,7 +32,6 @@ class AppointmentListEncoder(ModelEncoder):
         'is_vip'
     ]
     encoders = {
-        # "vin": AutomolbileVOEncoder(),
         "technician": TechnicianListEncoder()
     }
 

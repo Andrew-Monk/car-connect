@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 
 function CreateAppointmentForm () {
-  const [automobile, setAutomobile] = useState('')
+  	const [automobile, setAutomobile] = useState('')
 	const [customer, setCustomer] = useState('')
 	const [date, setDate] = useState('')
 	const [time, setTime] = useState('')
@@ -14,9 +14,11 @@ function CreateAppointmentForm () {
 				const techniciansUrl = 'http://localhost:8080/api/technicians/'
         const response = await fetch(techniciansUrl)
 
+
         if (response.ok) {
             const data = await response.json()
-            setTechnicians(data.technicians)
+
+            setTechnicians(data.technician)
         }
       }
 
@@ -64,10 +66,9 @@ function CreateAppointmentForm () {
 			data.date_time = time
 			data.reason = reason
 			data.technician = technician
-			console.log(data)
-
-			const appointmentUrl = 'http://localhost:8080/api/appointments/';
-  		const fetchConfig = {
+			// const dateTime = new Date(`${date}${time}`)
+			const appointmentUrl = "http://localhost:8080/api/appointments/";
+  			const fetchConfig = {
     		method: "post",
     		body: JSON.stringify(data),
     		headers: {
@@ -78,9 +79,6 @@ function CreateAppointmentForm () {
   		const response = await fetch(appointmentUrl, fetchConfig);
   		if (response.ok) {
     		const newAppointment = await response.json();
-    		console.log(newAppointment);
-
-				setAutomobile('')
 				setCustomer('')
 				setDate('')
 				setTime('')
@@ -119,10 +117,10 @@ function CreateAppointmentForm () {
 							<div className ="form-floating mb-3">
 							<select value={technician} onChange={handleTechnicianChange} required name="technician" id='technician' className ="form-select">
 								<option value="">Choose a Technician</option>
-								{technicians?.map(person => {
+								{technicians.map(technician => {
 									return (
-										<option key={person.id} value={person.id}>
-											{person.first_name} {person.last_name}
+										<option key={technician.id} value={technician.id}>
+											{technician.first_name} {technician.last_name}
 										</option>
 									)
 								})}

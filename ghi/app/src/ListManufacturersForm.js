@@ -32,7 +32,7 @@ function ListManufacturerForm () {
 		<table className="table table-striped mx-auto">
 			<thead>
 				<tr key='info'>
-					<th key='first_name'>Manufacturers</th>
+					<th>Manufacturers</th>
 
 				</tr>
 				</thead>

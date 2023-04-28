@@ -1,4 +1,4 @@
-from .models import AutomobileVO, Technician, Appointment, Status
+from .models import Technician, Appointment, Status
 from django.http import JsonResponse
 from .encoders import AppointmentListEncoder, TechnicianListEncoder
 import json
@@ -8,11 +8,14 @@ from django.views.decorators.http import require_http_methods
 @require_http_methods(["GET", "POST"])
 def api_list_technicians(request):
     if request.method == "GET":
-        technician = Technician.objects.all()
-        return JsonResponse(
-            {"technician": technician},
-            encoder=TechnicianListEncoder,
-        )
+        try:
+            technician = Technician.objects.all()
+            return JsonResponse(
+                {"technician": technician},
+                encoder=TechnicianListEncoder,
+            )
+        except Technician.DoesNotExist:
+            return JsonResponse({"message": "Invalid employee id"}, status=404)
 
     else:
         content = json.loads(request.body)
@@ -39,25 +42,20 @@ def api_delete_technician(request, id):
 @require_http_methods(["GET", "POST"])
 def api_list_appointments(request):
     if request.method == "GET":
-        appointments = Appointment.objects.all()
-        return JsonResponse(
-            {"appointments": appointments},
-            encoder=AppointmentListEncoder,
-        )
+        try:
+            appointments = Appointment.objects.all()
+            return JsonResponse(
+                {"appointments": appointments},
+                encoder=AppointmentListEncoder,
+            )
+        except Appointment.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid appointment id"},
+                status=404
+                )
 
     else:
         content = json.loads(request.body)
-
-        # try:
-        #     vin = AutomobileVO.objects.get(vin=content["vin"])
-        #     content["vin"] = vin
-
-        # except AutomobileVO.DoesNotExist:
-        #     return JsonResponse(
-        #         {"message": "Invalid vin id"},
-        #         status=400,
-        #     )
-
         try:
             technician = Technician.objects.get(
                 employee_id=content["technician"]

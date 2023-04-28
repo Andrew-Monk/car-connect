@@ -32,15 +32,15 @@ function ListAutomobileForm () {
 		<table className="table table-striped mx-auto">
 			<thead>
 				<tr key='info'>
-					<th key='first_name'>Manufacturer</th>
-					<th key='first_name'>Model</th>
-					<th key='first_name'>Year</th>
-					<th key='first_name'>Color</th>
-					<th key='first_name'>Vin</th>
-					<th key='first_name'>Sold</th>
-					<th key='picture_url'>Picture</th>
+					<th>Manufacturer</th>
+					<th>Model</th>
+					<th>Year</th>
+					<th>Color</th>
+					<th>Vin</th>
+					<th>Sold</th>
+					<th>Picture</th>
 				</tr>
-				</thead>
+			</thead>
 			<tbody>
                 {autos.map(auto => {
                     return (
