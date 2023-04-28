@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react'
 
 function CreateAppointmentForm () {
-  	const [automobile, setAutomobile] = useState('')
 	const [customer, setCustomer] = useState('')
 	const [date, setDate] = useState('')
 	const [time, setTime] = useState('')
 	const [technicians, setTechnicians] = useState([])
 	const [reason, setReason] = useState('')
 	const [technician, setTechnician] = useState('')
+	const [vin, setVin] = useState('')
 
 
     const fetchData = async () => {
@@ -22,11 +22,6 @@ function CreateAppointmentForm () {
         }
       }
 
-		const handleAutomobileChange = (event) => {
-			const value = event.target.value
-			setAutomobile(value)
-		}
-
 		const handleCustomerChange = (event) => {
 			const value = event.target.value
 			setCustomer(value)
@@ -35,11 +30,13 @@ function CreateAppointmentForm () {
 		const handleDateChange = (event) => {
 			const value = event.target.value
 			setDate(value)
+			console.log(date)
 		}
 
 		const handleTimeChange = (event) => {
 			const value = event.target.value
 			setTime(value)
+			console.log(time)
 		}
 
 		const handleReasonChange = (event) => {
@@ -52,6 +49,12 @@ function CreateAppointmentForm () {
 			setTechnician(value)
 		}
 
+		const handleVinChange = (event) => {
+			const value = event.target.value
+			setVin(value)
+		}
+
+
 
 		const handleSubmit = async (event) => {
 			event.preventDefault()
@@ -60,13 +63,11 @@ function CreateAppointmentForm () {
 			const data = {}
 
 
-			data.vin = automobile
+			data.vin = vin
 			data.customer_name = customer
-			data.date_time = date
-			data.date_time = time
+			data.date_time = date + " " + time
 			data.reason = reason
 			data.technician = technician
-			// const dateTime = new Date(`${date}${time}`)
 			const appointmentUrl = "http://localhost:8080/api/appointments/";
   			const fetchConfig = {
     		method: "post",
@@ -79,6 +80,7 @@ function CreateAppointmentForm () {
   		const response = await fetch(appointmentUrl, fetchConfig);
   		if (response.ok) {
     		const newAppointment = await response.json();
+				setVin('')
 				setCustomer('')
 				setDate('')
 				setTime('')
@@ -99,7 +101,7 @@ function CreateAppointmentForm () {
 					<form onSubmit={handleSubmit}>
 					<div className ="form-floating mb-3">
 						<div className ="form-floating mb-3">
-							<input value={automobile} onChange={handleAutomobileChange} placeholder="vin" name='vin' required type="string" id="vin" className ="form-control"/>
+							<input value={vin} onChange={handleVinChange} placeholder="vin" name='vin' required type="string" id="vin" className ="form-control"/>
 							<label htmlFor="vin">VIN</label>
 						</div>
 							<div className ="form-floating mb-3">
@@ -119,7 +121,7 @@ function CreateAppointmentForm () {
 								<option value="">Choose a Technician</option>
 								{technicians.map(technician => {
 									return (
-										<option key={technician.id} value={technician.id}>
+										<option key={technician.id} value={technician.employee_id}>
 											{technician.first_name} {technician.last_name}
 										</option>
 									)

@@ -11,7 +11,7 @@ class AutomobileVOAdmin(admin.ModelAdmin):
 class AppointmentAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(Technician)
 class TechnicianAdmin(admin.ModelAdmin):
     pass
-

@@ -5,12 +5,6 @@ function CreateTechnicianForm () {
     const [lastName, setLastName] = useState('')
     const [employeeId, setEmployeeId] = useState('')
 
-    // const fetchData = async () => {
-    //     const url = "http://localhost:8090/api/salespeople"
-
-    //     const response = await response.json()
-
-    // }
 
     const handleFirstNameChange = (event) => {
         const value = event.target.value
@@ -58,7 +52,7 @@ function CreateTechnicianForm () {
 
 
         useEffect(() => {
-            // fetchData()
+            
         }, [])
 
 
