@@ -61,10 +61,10 @@ function SalespersonHistory () {
 						<table className="table table-striped mx-auto">
 						<thead>
 							<tr key='info'>
-								<th key='salesperson'>Salesperson</th>
-								<th key='customer'>Customer</th>
-								<th key='vin'>VIN</th>
-								<th key='price'>Price</th>
+								<th>Salesperson</th>
+								<th>Customer</th>
+								<th>VIN</th>
+								<th>Price</th>
 							</tr>
 							</thead>
 							<tbody>

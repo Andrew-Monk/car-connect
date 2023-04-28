@@ -39,20 +39,20 @@ function CustomersList () {
 		<table className="table table-striped mx-auto">
 			<thead>
 				<tr key='info'>
-					<th key='first_name'>First Name</th>
-					<th key='last_name'>Last Name</th>
-					<th key='phone_number'>Phone Number</th>
-                    <th key='address'>Address</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Phone Number</th>
+                    <th>Address</th>
 				</tr>
 				</thead>
 			<tbody>
                 {customers.map(customer => {
                     return (
                     <tr key={customer.id}>
-                        <td key='first_name'>{customer.first_name}</td>
-                        <td key='last_name'>{customer.last_name}</td>
-                        <td key='phone_number'>{customer.phone_number}</td>
-                        <td key='address'>{customer.address}</td>
+                        <td>{customer.first_name}</td>
+                        <td>{customer.last_name}</td>
+                        <td>{customer.phone_number}</td>
+                        <td>{customer.address}</td>
                         <td>
 							<button onClick={ (event) => {handleDelete(customer.id, event)}}>Delete</button>
 						</td>

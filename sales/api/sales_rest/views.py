@@ -117,14 +117,10 @@ def list_sales(request, vin=None):
         try:
             salesperson = Salesperson.objects.get(id=content['salesperson'])
             content['salesperson'] = salesperson
-            print(salesperson, "test test test")
             customer = Customer.objects.get(id=content['customer'])
             content['customer'] = customer
-            print(customer, "customer customer test test test")
             automobile = AutomobileVO.objects.get(vin=content['automobile'])
             content['automobile'] = automobile
-            print(automobile, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-            print(content)
         except (
             Salesperson.DoesNotExist,
             Customer.DoesNotExist,

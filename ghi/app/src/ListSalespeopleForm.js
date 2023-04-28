@@ -39,18 +39,18 @@ function SalespeopleList () {
 		<table className="table table-striped mx-auto">
 			<thead>
 				<tr key='info'>
-					<th key='id'>Employee ID</th>
-					<th key='first_name'>First Name</th>
-					<th key='last_name'>Last Name</th>
+					<th>Employee ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
 				</tr>
 				</thead>
 			<tbody>
                 {salespeople.map(person => {
                     return (
                     <tr key={person.id}>
-                        <td key='id'>{person.employee_id}</td>
-                        <td key='first_name'>{person.first_name}</td>
-                        <td key='last_name'>{person.last_name}</td>
+                        <td>{person.employee_id}</td>
+                        <td>{person.first_name}</td>
+                        <td>{person.last_name}</td>
                         <td>
 							<button onClick={ (event) => {handleDelete(person.id, event)}}>Delete</button>
 						</td>

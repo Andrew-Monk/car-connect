@@ -38,22 +38,22 @@ function SalesList () {
 		<table className="table table-striped mx-auto">
 			<thead>
 				<tr key='info'>
-					<th key='id'>Salesperson Employee ID</th>
-					<th key='salesperson_name'>Salesperson Name</th>
-					<th key='customer_name'>Customer</th>
-            <th key='vin'>VIN</th>
-            <th key='price'>Price</th>
+					<th>Salesperson Employee ID</th>
+					<th>Salesperson Name</th>
+					<th>Customer</th>
+            <th>VIN</th>
+            <th>Price</th>
 					</tr>
 					</thead>
 					<tbody>
             {sales.map(sale => {
               return (
                 <tr key={sale.id}>
-                  <td key='id'>{sale.salesperson.employee_id}</td>
-                  <td key='salesperson_name'>{sale.salesperson.first_name} {sale.salesperson.last_name}</td>
-                  <td key='customer_name'>{sale.customer.first_name} {sale.customer.last_name}</td>
-									<td key='vin'>{sale.automobile.vin}</td>
-									<td key='price'>${sale.price}</td>
+                  <td>{sale.salesperson.employee_id}</td>
+                  <td>{sale.salesperson.first_name} {sale.salesperson.last_name}</td>
+                  <td>{sale.customer.first_name} {sale.customer.last_name}</td>
+									<td>{sale.automobile.vin}</td>
+									<td>${sale.price}</td>
                   <td>
 										<button onClick={ (event) => {handleDelete(sale.id, event)}}>Delete</button>
 									</td>

@@ -15,19 +15,14 @@ from sales_rest.models import AutomobileVO
 def vin_poll():
     response = requests.get('http://project-beta-inventory-api-1:8000/api/automobiles/')
     content = json.loads(response.content)
-    print(content)
     for automobile in content["autos"]:
         try:
-            obj, created = AutomobileVO.objects.update_or_create(
+            AutomobileVO.objects.update_or_create(
                 import_href=automobile["href"],
                 defaults={"vin": automobile["vin"]},
             )
-            if created:
-                print('created the stuff', obj)
-            else:
-                print('i updated the stuff', obj, content)
         except Exception as e:
-            print('i got da error', e)
+            print('Error:', e)
 
 
 def poll():
