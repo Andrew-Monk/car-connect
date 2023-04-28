@@ -119,10 +119,10 @@ function CreateAppointmentForm () {
 							<div className ="form-floating mb-3">
 							<select value={technician} onChange={handleTechnicianChange} required name="technician" id='technician' className ="form-select">
 								<option value="">Choose a Technician</option>
-								{technician && technicians.map(technician => {
+								{technicians?.map(person => {
 									return (
-										<option key={technician.employee_id} value={technician.employee_id}>
-											{technician.first_name} {technician.last_name}
+										<option key={person.id} value={person.id}>
+											{person.first_name} {person.last_name}
 										</option>
 									)
 								})}

@@ -37,6 +37,7 @@ function ListAutomobileForm () {
 					<th key='first_name'>Year</th>
 					<th key='first_name'>Color</th>
 					<th key='first_name'>Vin</th>
+					<th key='first_name'>Sold</th>
 					<th key='picture_url'>Picture</th>
 				</tr>
 				</thead>
@@ -49,6 +50,7 @@ function ListAutomobileForm () {
 						<td> {auto.year}</td>
 						<td> {auto.color}</td>
 						<td> {auto.vin}</td>
+						<td> {auto.sold ? "Yes" : "No"}</td>
 						<td> <img width='100' src={auto.model.picture_url}/>
 						</td>
 					</tr>

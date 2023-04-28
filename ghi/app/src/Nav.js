@@ -20,7 +20,7 @@ function Nav() {
               <NavLink className='nav-link' to='/appointments/history'>Service History</NavLink>
             </li>
             <li className='nav-item'>
-              <NavLink className='nav-link' to='/apppointments/list'>Service Appointments</NavLink>
+              <NavLink className='nav-link' to='/appointments/list'>Service Appointments</NavLink>
             </li>
             <li className='nav-item'>
               <NavLink className='nav-link' to='/appointments/create'>Request a Service Appointment</NavLink>

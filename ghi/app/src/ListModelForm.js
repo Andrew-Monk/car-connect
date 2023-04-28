@@ -32,8 +32,9 @@ function ListModelForm () {
 		<table className="table table-striped mx-auto">
 			<thead>
 				<tr key='info'>
-					<th key='first_name'>Models</th>
-
+					<th key='models'>Models</th>
+					<th key='manufacturer'>Manufacturer</th>
+					<th key='picture_url'>Image</th>
 				</tr>
 				</thead>
 			<tbody>
@@ -41,6 +42,9 @@ function ListModelForm () {
                     return (
                     <tr key={model.id}>
                         <td> {model.name}</td>
+						<td> {model.manufacturer.name}</td>
+						<td> <img width='100' src={model.picture_url}/>
+						</td>
 					</tr>
                     )
                     })}
