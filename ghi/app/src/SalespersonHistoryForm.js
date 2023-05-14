@@ -58,7 +58,7 @@ function SalespersonHistory () {
 						</div>
 					</form>
 					{salesperson && (
-						<table className="table table-striped mx-auto">
+						<table className="table table-striped table-hover mx-auto">
 						<thead>
 							<tr key='info'>
 								<th>Salesperson</th>

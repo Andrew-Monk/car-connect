@@ -54,7 +54,7 @@ function CustomersList () {
                         <td>{customer.phone_number}</td>
                         <td>{customer.address}</td>
                         <td>
-							<button onClick={ (event) => {handleDelete(customer.id, event)}}>Delete</button>
+							<button onClick={ (event) => {handleDelete(customer.id, event)}} className="btn btn-danger btn-sm">Delete</button>
 						</td>
 					</tr>
                     )

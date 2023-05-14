@@ -55,7 +55,7 @@ function SalesList () {
 									<td>{sale.automobile.vin}</td>
 									<td>${sale.price}</td>
                   <td>
-										<button onClick={ (event) => {handleDelete(sale.id, event)}}>Delete</button>
+										<button onClick={ (event) => {handleDelete(sale.id, event)}} className="btn btn-danger btn-sm">Delete</button>
 									</td>
 								</tr>
                 )
