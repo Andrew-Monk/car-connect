@@ -36,7 +36,7 @@ function CustomersList () {
 				Become a VIP member today!
 			</p>
 		</div>
-		<table className="table table-striped mx-auto">
+		<table className="table table-striped table-hover mx-auto">
 			<thead>
 				<tr key='info'>
 					<th>First Name</th>

@@ -35,11 +35,11 @@ function ServiceHistory() {
     <div>
       <h1>Service History</h1>
       <form onSubmit={handleSearch}>
-        <label htmlFor="vin"> VIN:</label>
-        <input type="text" id="vin" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} />
-        <button type="submit">Search</button>
+        <div className ="form-floating mb-3"></div>
+        <input type="text" className ="form-control-sm" id="vin" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} />
+        <button type="submit" className="btn btn-secondary btn-sm">Search</button>
       </form>
-      <table className='table table-striped mx-auto'>
+      <table className='table table-striped table-hover mx-auto'>
         <thead>
           <tr>
             <th>VIN</th>

@@ -29,7 +29,7 @@ function ListModelForm () {
 		<h1 className="display-5 fw-bold">Come See Our Cars!</h1>
 		<div className="col-lg-6 mx-auto">
 		</div>
-		<table className="table table-striped mx-auto">
+		<table className="table table-striped table-hover mx-auto">
 			<thead>
 				<tr key='info'>
 					<th>Models</th>

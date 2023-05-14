@@ -50,7 +50,7 @@ function ListAppointmentForm() {
   return (
     <div>
       <h1>Service Appointments</h1>
-      <table className='table table-striped mx-auto'>
+      <table className='table table-striped table-hover mx-auto'>
         <thead>
           <tr>
             <th>VIN</th>

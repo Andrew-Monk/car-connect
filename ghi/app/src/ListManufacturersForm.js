@@ -32,7 +32,7 @@ function ListManufacturerForm () {
 				Our Trusted Brands
 			</p>
 		</div>
-		<table className="table table-striped mx-auto">
+		<table className="table table-striped table-bordered table-hover mx-auto">
 			<thead>
 				<tr key='info'>
 					<th>Manufacturers</th>

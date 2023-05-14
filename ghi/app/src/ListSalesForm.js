@@ -35,7 +35,7 @@ function SalesList () {
 				Our Happy Customers and Loyal Salespeople
 			</p>
 		</div>
-		<table className="table table-striped mx-auto">
+		<table className="table table-striped table-hover mx-auto">
 			<thead>
 				<tr key='info'>
 					<th>Salesperson Employee ID</th>

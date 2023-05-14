@@ -55,12 +55,6 @@ code {
 
 .container {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 0px;
-
-}
-
-.navbar-size {
-  height: 115px;
-  width: 115px;
+  margin: auto;
+  padding: -10px;
 }

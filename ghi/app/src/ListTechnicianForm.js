@@ -40,7 +40,7 @@ function ListTechnicians () {
 				Meet Our Highly Trained Staff!
 			</p>
 		</div>
-		<table className="table table-striped mx-auto">
+		<table className="table table-striped table-hover mx-auto">
 			<thead>
 				<tr key='info'>
 					<th>First Name</th>
@@ -56,7 +56,7 @@ function ListTechnicians () {
                         <td> {person.last_name}</td>
                         <td> {person.employee_id}</td>
                         <td>
-							<button onClick={ (event) => {handleDelete(person.id, event)}}>Delete</button>
+							<button onClick={ (event) => {handleDelete(person.id, event)}} className="btn btn-danger btn-sm">Delete</button>
 						</td>
 					</tr>
                     )

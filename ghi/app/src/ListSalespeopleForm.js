@@ -36,7 +36,7 @@ function SalespeopleList () {
 				Our Highly Trained Staff
 			</p>
 		</div>
-		<table className="table table-striped mx-auto">
+		<table className="table table-striped table-hover mx-auto">
 			<thead>
 				<tr key='info'>
 					<th>Employee ID</th>
@@ -52,7 +52,7 @@ function SalespeopleList () {
                         <td>{person.first_name}</td>
                         <td>{person.last_name}</td>
                         <td>
-							<button onClick={ (event) => {handleDelete(person.id, event)}}>Delete</button>
+							<button onClick={ (event) => {handleDelete(person.id, event)}} className="btn btn-danger btn-sm">Delete</button>
 						</td>
 					</tr>
                     )
