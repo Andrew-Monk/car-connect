@@ -19,7 +19,7 @@ import CreateTechnicianForm from './CreateTechnicianForm'
 import ListManufacturersForm from './ListManufacturersForm'
 import ListAutomobileForm from './ListAutomobileForm'
 import ListModelForm from './ListModelForm'
-
+import './index.css'
 
 
 function App() {

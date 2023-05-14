@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 
+
 function CreateAppointmentForm () {
 	const [customer, setCustomer] = useState('')
 	const [date, setDate] = useState('')
@@ -133,7 +134,9 @@ function CreateAppointmentForm () {
 							<label htmlFor="reason">Reason</label>
 						</div>
 						</div>
-						<button className ="btn btn-primary">Create</button>
+						<div class="col-md-12 text-center">
+							<button className ="btn btn-primary">Create</button>
+						</div>
 					</form>
 				</div>
 			</div>

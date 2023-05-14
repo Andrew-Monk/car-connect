@@ -52,7 +52,7 @@ function CreateTechnicianForm () {
 
 
         useEffect(() => {
-            
+
         }, [])
 
 
@@ -74,7 +74,9 @@ function CreateTechnicianForm () {
 							<input value={employeeId} onChange={handleEmployeeIdChange} placeholder="employee id" name = 'employee id' required type="text" id="employee_id" className ="form-control"/>
 							<label htmlFor="ends">Employee Id</label>
 					 </div>
-						<button className ="btn btn-primary">Create</button>
+                    <div class="col-md-12 text-center">
+                        <button className ="btn btn-primary">Create</button>
+                    </div>
 					</form>
 				</div>
 			</div>

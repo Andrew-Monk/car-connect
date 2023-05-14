@@ -45,11 +45,13 @@ function NewManufacturerForm () {
 							<div className ="shadow p-4 mt-4">
 								<h1>Create a new Manufacturer</h1>
 								<form onSubmit={handleSubmit}>
-									<div className ="form-floating mb-3">
+									<div className ="form-floating mb-4">
 										<input value={name} onChange={handleNameChange} placeholder="First Name" name=' first name' required type="text" id="first_name" className ="form-control"/>
 										<label htmlFor="first_name">Manufacturer</label>
 									</div>
-									<button className ="btn btn-primary">Create</button>
+									<div class="col-md-12 text-center">
+							            <button className ="btn btn-primary">Create</button>
+						            </div>
 								</form>
 							</div>
 						</div>

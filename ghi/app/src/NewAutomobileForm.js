@@ -104,9 +104,9 @@ function NewAutomobileForm () {
 												)
 											})}
 									</select>
-									<div>
-									<button className ="btn btn-primary">Create</button>
-									</div>
+									<div class="col-md-12 text-center">
+							            <button className ="btn btn-primary mt-3">Create</button>
+						            </div>
 								</form>
 							</div>
 						</div>

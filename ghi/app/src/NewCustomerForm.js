@@ -87,7 +87,9 @@ function CustomerForm () {
 										<input value={phoneNumber} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onChange={handlePhoneNumberChange} placeholder="phone number" name = 'phone number' required type="tel" id="phone_number" className ="form-control"/>
 										<label htmlFor="phone_number">Phone Number xxx-xxx-xxxx</label>
 								</div>
-									<button className ="btn btn-primary">Create</button>
+								<div class="col-md-12 text-center">
+							        <button className ="btn btn-primary">Create</button>
+						        </div>
 								</form>
 							</div>
 						</div>

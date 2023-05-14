@@ -147,7 +147,9 @@ function NewSaleForm () {
 							<input value={price} onChange={handlePriceChange} placeholder="price" name='price' required type="string" id="price" className ="form-control"/>
 							<label htmlFor="price">Price</label>
 						</div>
-						<button className ="btn btn-primary">Create</button>
+						<div class="col-md-12 text-center">
+							<button className ="btn btn-primary">Create</button>
+						</div>
 					</form>
 				</div>
 			</div>
