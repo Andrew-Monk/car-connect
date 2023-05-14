@@ -121,3 +121,5 @@ def api_cancel_appointment(request, id):
     return JsonResponse(
         {'message': 'Your appointment has been canceled.'}
     )
+
+
