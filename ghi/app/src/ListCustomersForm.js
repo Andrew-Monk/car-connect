@@ -30,10 +30,10 @@ function CustomersList () {
 
     return (
         <div className="px-4 py-5 my-5 text-center">
-		<h1 className="display-5 fw-bold">Check Out Our Loyal Customers</h1>
+		<h1 className="display-5 fw-bold">Check Out Our Loyal Customers:</h1>
 		<div className="col-lg-6 mx-auto">
 			<p className="lead mb-4">
-				Our Super Duper Cool Customers
+				Become a VIP member today!
 			</p>
 		</div>
 		<table className="table table-striped mx-auto">

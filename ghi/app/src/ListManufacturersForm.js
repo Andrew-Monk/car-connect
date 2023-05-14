@@ -28,6 +28,9 @@ function ListManufacturerForm () {
         <div className="px-4 py-5 my-5 text-center">
 		<h1 className="display-5 fw-bold">What we sell!</h1>
 		<div className="col-lg-6 mx-auto">
+			<p>
+				Our Trusted Brands
+			</p>
 		</div>
 		<table className="table table-striped mx-auto">
 			<thead>
